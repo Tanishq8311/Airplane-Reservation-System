@@ -1,0 +1,85 @@
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",port="3306",user="root",passwd="root")
+mycursor=mydb.cursor()
+mycursor.execute("create database myairport")
+
+
+
+
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",port="3306",user="root",passwd="root", database="myairport")
+mycursor=mydb.cursor()
+mycursor.execute("create table airdetails(PlaneNumber integer(5) primary key,Airline_Name varchar(20),Source_City varchar(20),Destination_City varchar(20),Dept_Date DATE,Dept_Time TIME, Arrival_Time TIME, N_F_Class integer(3), F_Fare integer(6), N_B_Class integer(3),B_Fare integer(6), N_PE_Class integer(3), PE_Fare integer(6), N_E_Class integer(3), E_Fare integer(6) )")
+
+
+
+
+insert into airdetails values(9903,'AirIndia','Mumbai','Delhi','2020-02-08','11:35:00','13:50:00', 10, 42000, 10, 21000, 30, 10000, 100,5000);
+insert into airdetails values(7226,"Indigo","Jaipur","Mumbai","2020-09-14", "19:55:00","21:15:00", 10, 45000, 10, 23000, 30, 10500, 100,5500);
+insert into airdetails values(9996,"AirAsia","Kolkata","Jaipur","2020-10-02", "09:40:00","11:55:00", 10, 35000, 10, 20000, 30, 11000, 100,6000);
+insert into airdetails values(6073,"Spicejet","Delhi","Jaipur","2020-05-20","15:05:00","16:30:00", 10, 20000, 10, 10000, 30, 8000, 100,4000);
+insert into airdetails values(5140,"AirIndia","Mumbai","Jaipur","2020-02-08","20:45:00","22:25:00", 10, 45500, 10, 23500, 30, 10600, 100,5400);
+insert into airdetails values(3833,"Indigo","Delhi","Kolkata","2020-12-21","10:20:00","12:50:00", 10, 37000, 10, 21600, 30, 10800, 100,5100);
+insert into airdetails values(8024,"AirAsia","Kolkata","Jaipur","2020-09-14","13:40:00","16:00:00", 10, 38000, 10, 21000, 30, 10000, 100,5000);
+insert into airdetails values(4021,"Jetairways","Jaipur","Kolkata","2020-10-02","19:30:00","22:40:00", 10, 39000, 10, 21400, 30, 10000, 100,5010);
+insert into airdetails values(7609,"Spicejet","Mumbai","Delhi","2020-05-20","21:30:00","23:10:00", 10, 40000, 10, 21300, 30, 10000, 100,5030);
+insert into airdetails values(5648,"Indigo","Jaipur","Mumbai","2020-02-08",'08:25:00','11:05:00', 10, 41000, 10, 22100, 30, 10500, 100,5050);
+insert into airdetails values(8607,"AirAsia","Delhi","Jaipur","2020-12-21",'20:45:00','23:35:00', 10, 43000, 10, 23000, 30, 10600, 100,5060);
+insert into airdetails values(5075,"AirIndia","Mumbai","Kolkata","2020-09-14",'13:30:00','15:55:00', 10, 34000, 10, 21050, 30, 10700, 100,5070);
+insert into airdetails values(5051,"AirIndia","Kolkata","Delhi","2020-10-02",'17:40:00','20:10:00', 10, 36000, 10, 21040, 30, 10800, 100,5070);
+insert into airdetails values(6783,"Spicejet","Jaipur","Delhi","2020-05-20",'21:35:00','23:00:00', 10, 38000, 10, 19000, 30, 10900, 100,5090);
+insert into airdetails values(9514,"Jetairways","Mumbai","Kolkata","2020-02-08",'16:55:00','19:15:00', 10, 39000, 10, 18000, 30, 10100, 100,5100);
+insert into airdetails values(4971,"AirAsia","Kolkata","Mumbai","2020-12-21",'18:15:00','21:30:00', 10, 40000, 10, 17000, 30, 10200, 100,5300);
+insert into airdetails values(6094,"Indigo","Delhi","Mumbai","2020-09-14",'05:25:00','07:40:00', 10, 41200, 10, 19000, 30, 10300, 100,5450);
+insert into airdetails values(9344,"Jetairways","Jaipur","Kolkata","2020-10-02",'07:00:00','09:50:00', 10, 40900, 10, 21000, 30, 10700, 100,4500);
+insert into airdetails values(7393,"Spicejet","Kolkata","Delhi","2020-05-20",'07:20:00','08:45:00', 10, 35000, 10, 19000, 30, 11000, 100,5500);
+
+
+To create Passenger reservation details
+
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",port="3307",user="root",passwd="root", database="myairport")
+mycursor=mydb.cursor()
+mycursor.execute("create table reservation_details(PNR integer(5) primary key, PlaneNumber integer(5), Name varchar(20), Age integer(3), Mobile integer(10), No_Seats integer(3),Class varchar(3),Total_Fare integer(6),Status varchar(15))")
+
+
+To restore the no of seats in a particular flight
+mysql> update airdetails set N_F_Class=10 where PlaneNumber=5648;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+s_id = input('Salesman ID:')
+s_name = input('Name:')
+s_city = input('City:')
+s_commision = input('Commission:')
+cursor.execute("""
+INSERT INTO salesman(salesman_id, name, city, commission)
+VALUES (?,?,?,?)
+""", (s_id, s_name, s_city, s_commision))
+conn.commit ()
+print ( 'Data entered successfully.' )
+conn . close ()
+   
+
+
+

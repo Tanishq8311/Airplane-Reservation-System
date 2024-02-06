@@ -1,0 +1,107 @@
+import mysql.connector
+mydb=mysql.connector.connect(host="localhost",user="root",passwd="root")
+mycursor=mydb.cursor()
+mycursor.execute("create database airport")
+
+
+import mysql.conector
+mydb=mysql.connector.connect(host="localhost",user="root",passwd="root",database="airport")
+mycursor=mydb.cursor()
+mycursor.execute("create table airdet(PNR integer(5) primary key,Airline varchar(20),fromm varchar(20),destination varchar(20),Deptdate DATE,departure integer(4),arrival integer(4),Class varchar(20))")
+
+insert into airdet values(9903,"AirIndia","Mumbai","Delhi","2020-02-08",1135,1350,"fc");
+insert into airdet values(3822,"Jetairways","Delhi","Mumbai","2020-12-21",1435,1700,"bnc");
+insert into airdet values(7226,"Indigot","Jaipur","Mumbai","2020-09-14",1955,2115,"pec");
+insert into airdet values(9996,"AirAsia","Kolkata","Jaipur","2020-10-02",0940,1155,"ec");
+insert into airdet values(6073,"Spicejet","Delhi","Jaipur","2020-05-20",1505,1630,"pec");
+insert into airdet values(5140,"AirIndia","Mumbai","Jaipur","2020-02-08",2045,2225,"ec");
+insert into airdet values(3833,"Indigot","Delhi","Kolkata","2020-12-21",1020,1250,"fc");
+insert into airdet values(8024,"AirAsia","Kolkata","Jaipur","2020-09-14",1340,1600,"bnc");
+insert into airdet values(4021,"Jetairways","Jaipur","Kolkata","2020-10-02",1930,2240,"bnc");
+insert into airdet values(7609,"Spicejet","Mumbai","Delhi","2020-05-20",2130,2310,"pec");
+insert into airdet values(5648,"Indigot","Jaipur","Mumbai","2020-02-08",0825,1105,"fc");
+insert into airdet values(8607,"AirAsia","Delhi","Jaipur","2020-12-21",2045,2335,"ec");
+insert into airdet values(5075,"AirIndia","Mumbai","Kolkata","2020-09-14",1330,1555,"bnc");
+insert into airdet values(5051,"AirIndia","Kolkata","Delhi","2020-10-02",1740,2010,"bnc");
+insert into airdet values(6783,"Spicejet","Jaipur","Delhi","2020-05-20",2135,2300,"fc");
+insert into airdet values(9514,"Jetairways","Mumbai","Kolkata","2020-02-08",1655,1915,"ec");
+insert into airdet values(4971,"AirAsia","Kolkata","Mumbai","2020-12-21",1815,2130,"pec");
+insert into airdet values(6094,"Indigot","Delhi","Mumbai","2020-09-14",0525,0740,"ec");
+insert into airdet values(9344,"Jetairways","Jaipur","Kolkata","2020-10-02",0700,0950,"fc");
+insert into airdet values(7393,"Spicejet","Kolkata","Delhi","2020-05-20",0720,0845,"pec");
+
+
+# Read/update/delete data from database. Exception Handling is done to catch error while retreiving data from requisite tables.
+
+import sys
+import MySQLdb
+import mysql.conector
+from mysql.connector import Error
+
+sql_select_Query1 = "select * from airdet;"  # Select all records from airdet table.
+sql_select_Query2 = "select * from airdet where Airline = "AirIndia";"  # Select all records from airdet table where Airline = AirIndia.
+sql_select_Query3 = "UPDATE airdet SET Airline = "AirIndia" WHERE PNR = '3822'; " # update airline name.
+sql_select_Query4 = "DELETE from airdet where PNR = '7393'; "  # delete fligh record.
+
+try:
+    connection = mysql.connector.connect(host='localhost',
+                                         database='database',
+                                         user='root',
+                                         password='root')
+
+ #To fetch all records from database execute below:
+    cursor = connection.cursor()
+    cursor.execute(sql_select_Query1) 
+    records = cursor.fetchall()
+    print("Total number of operating flights: ", cursor.rowcount)
+
+    print("\nPrinting each flight detail:")  
+    for row in records:
+        print("PNR = ", row[0], )
+        print("Airline = ", row[1])
+        print("Departure City  = ", row[2])
+        print("Arrival City  = ", row[3])
+        print("Departure City  = ", row[4])
+        print("Departure  = ", row[5], "\n")
+
+# To fetch AirIndia flights only execute below: 
+
+    cursor = connection.cursor()
+    cursor.execute(sql_select_Query2)  
+    records = cursor.fetchall()
+    print("Total number of AirIndia flights: ", cursor.rowcount)
+
+    print("\nPrinting each flight detail:")  
+    for row in records:
+        print("PNR = ", row[0], )
+        print("Airline = ", row[1])
+        print("Departure City  = ", row[2])
+        print("Arrival City  = ", row[3])
+        print("Departure City  = ", row[4])
+        print("Departure  = ", row[5], "\n")
+
+#To update any flight detail execute below:
+
+    cursor = connection.cursor()
+    cursor.execute(sql_select_Query3)  
+    records = cursor.fetchall()
+    db.commit()
+
+#To remove record from table, execute below:
+
+    cursor = connection.cursor()
+    cursor.execute(sql_select_Query4)  
+    records = cursor.fetchall()
+    db.commit()
+
+except Error as e:
+    print("Error reading data from MySQL table", e)
+    
+
+
+finally:
+    if (connection.is_connected()):
+        connection.close()
+        cursor.close()
+        print("MySQL connection is closed")
+
