@@ -18,7 +18,7 @@ This is a simple Airline Reservation System implemented in Python using MySQL as
    ```
 4. **Set up MySQL database:**
    - Create a database named `myairport`.
-   - Execute the SQL script provided in the repository (`database_setup.sql`) to create the necessary tables.
+   - Execute the SQL script in python IDLE provided in the repository (`database_creation.txt`) to create the necessary tables.
 
 ## Usage
 1. **Run the main program:**
